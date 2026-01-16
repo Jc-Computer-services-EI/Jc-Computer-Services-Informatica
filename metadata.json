@@ -1,0 +1,7 @@
+{
+  "name": "JC Computer Services",
+  "description": "Uma plataforma moderna e profissional para soluções completas em TI, suporte técnico e formação em informática.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

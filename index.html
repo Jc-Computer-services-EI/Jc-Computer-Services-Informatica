@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JC Computer Services - Soluções em TI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; color: #0f172a; }
+    .glass-nav { transition: all 0.5s ease; }
+    .glass-nav.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 0.75rem 0; color: #020617; }
+    
+    @keyframes shimmer { 100% { transform: translateX(100%); } }
+    .animate-shimmer { position: relative; overflow: hidden; }
+    .animate-shimmer::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transform: translateX(-100%); animation: shimmer 2.5s infinite; }
+    
+    .hero-bg { background-color: #020617; position: relative; overflow: hidden; }
+    .dark-section { background-color: #020617; color: #ffffff; }
+    
+    .card-modern { 
+      background: #ffffff; 
+      border: 1px solid #f1f5f9; 
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+      border-radius: 2.5rem; 
+      overflow: hidden; 
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-modern:hover { 
+      transform: translateY(-12px); 
+      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.12); 
+      border-color: #3b82f6; 
+    }
+    
+    .floating-whatsapp {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f8fafc; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body class="bg-white">
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-6 glass-nav text-white">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <a href="#" class="flex flex-col leading-none group">
+        <span class="text-xl md:text-2xl font-black tracking-tighter uppercase transition-colors">JC COMPUTER</span>
+        <span class="text-[9px] font-bold tracking-[0.5em] uppercase opacity-70">Services</span>
+      </a>
+      
+      <div class="hidden md:flex items-center space-x-12">
+        <a href="#servicos" class="text-[11px] font-bold tracking-widest uppercase hover:text-yellow-400 transition-colors">Serviços</a>
+        <a href="#sobre" class="text-[11px] font-bold tracking-widest uppercase hover:text-yellow-400 transition-colors">Sobre</a>
+        <a href="#galeria" class="text-[11px] font-bold tracking-widest uppercase hover:text-yellow-400 transition-colors">Portfólio</a>
+        <a href="#inscricao" id="nav-cta" class="bg-yellow-400 text-blue-950 px-8 py-2.5 rounded-full text-[11px] font-black tracking-widest hover:scale-105 transition-all">INSCRIÇÃO</a>
+      </div>
+      
+      <button id="mobile-menu-btn" class="md:hidden p-2"><i data-lucide="menu"></i></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] hidden flex-col p-10 space-y-8 animate-in slide-in-from-top duration-300">
+    <div class="flex justify-end"><button id="close-menu"><i data-lucide="x"></i></button></div>
+    <a href="#servicos" class="text-2xl font-black uppercase text-blue-950">Serviços</a>
+    <a href="#sobre" class="text-2xl font-black uppercase text-blue-950">Sobre</a>
+    <a href="#galeria" class="text-2xl font-black uppercase text-blue-950">Portfólio</a>
+    <a href="#inscricao" class="bg-blue-950 text-white p-6 rounded-2xl text-center font-black uppercase">Fazer Inscrição</a>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero-bg min-h-screen flex items-center justify-center text-white pt-20">
+    <div class="absolute inset-0 opacity-20 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600 rounded-full blur-[180px] -translate-y-1/2 translate-x-1/4"></div>
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-800 rounded-full blur-[120px] translate-y-1/4 -translate-x-1/4"></div>
+    </div>
+    
+    <div class="relative z-10 text-center px-6 max-w-5xl">
+      <div class="mb-8 inline-flex items-center gap-3 px-4 py-2 bg-blue-500/10 rounded-full border border-blue-500/20 backdrop-blur-sm">
+        <span class="w-1.5 h-1.5 bg-yellow-400 rounded-full"></span>
+        <span class="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[9px]">José Changa Computer Services</span>
+      </div>
+      <h1 class="text-6xl md:text-9xl font-black mb-10 tracking-tighter leading-none">Inovação e <br/><span class="text-yellow-400">Excelência</span>.</h1>
+      <p class="text-lg md:text-xl text-slate-400 mb-14 font-medium max-w-2xl mx-auto leading-relaxed">Oferecemos soluções completas de TI e formação técnica de elite para impulsionar o seu futuro digital em Moçambique.</p>
+      
+      <div class="flex flex-col sm:row gap-6 justify-center">
+        <a href="#orcamento" class="animate-shimmer bg-yellow-400 text-blue-950 px-12 py-5 rounded-2xl font-black text-lg shadow-2xl hover:bg-yellow-300 transition-all transform hover:-translate-y-1">Solicitar Orçamento</a>
+        <a href="#servicos" class="bg-white/5 border border-white/10 px-12 py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition-all backdrop-blur-sm">Nossos Serviços</a>
+      </div>
+    </div>
+    
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
+      <i data-lucide="chevron-down" size="32"></i>
+    </div>
+  </header>
+
+  <!-- Services Section -->
+  <section id="servicos" class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div class="max-w-2xl">
+          <h2 class="text-blue-600 font-bold uppercase text-[11px] tracking-[0.4em] mb-4">Especialidades</h2>
+          <p class="text-4xl md:text-6xl font-black text-blue-950 leading-none">O Que Fazemos</p>
+        </div>
+        <div class="h-0.5 flex-grow bg-slate-100 hidden md:block mb-4 ml-10"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Aulas -->
+        <div class="card-modern">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Formação">
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-950/80 to-transparent"></div>
+            <div class="absolute top-6 left-6 bg-yellow-400 text-blue-950 w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg"><i data-lucide="graduation-cap"></i></div>
+          </div>
+          <div class="p-10 flex flex-col flex-grow">
+            <h3 class="text-2xl font-bold text-blue-950 mb-4">Aulas de Informática</h3>
+            <p class="text-slate-500 mb-8 text-sm leading-relaxed flex-grow">Ensino prático do zero ao avançado. Domine as ferramentas essenciais para o mercado de trabalho com certificação.</p>
+            <div class="bg-slate-50 p-6 rounded-2xl mb-8 space-y-3 border border-slate-100 mt-auto">
+               <div class="flex justify-between text-[11px] font-bold uppercase tracking-widest"><span>Inscrição</span><span class="text-blue-600">500,00 MT</span></div>
+               <div class="flex justify-between text-[11px] font-bold uppercase tracking-widest"><span>Mensalidade</span><span class="text-blue-600">1800,00 MT</span></div>
+            </div>
+            <a href="#inscricao" class="block w-full text-center py-4 bg-blue-950 text-white font-bold rounded-xl text-xs uppercase tracking-widest hover:bg-yellow-400 hover:text-blue-950 transition-all">Matricular Agora</a>
+          </div>
+        </div>
+        
+        <!-- Suporte -->
+        <div class="card-modern">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Suporte">
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-950/80 to-transparent"></div>
+            <div class="absolute top-6 left-6 bg-white/90 text-blue-600 w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg"><i data-lucide="shield"></i></div>
+          </div>
+          <div class="p-10">
+            <h3 class="text-2xl font-bold text-blue-950 mb-4">Suporte Técnico</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Atendimento rápido e eficaz. Diagnósticos precisos e manutenção para manter sua produtividade.</p>
+          </div>
+        </div>
+        
+        <!-- Redes -->
+        <div class="card-modern">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Redes">
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-950/80 to-transparent"></div>
+            <div class="absolute top-6 left-6 bg-white/90 text-blue-600 w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg"><i data-lucide="network"></i></div>
+          </div>
+          <div class="p-10">
+            <h3 class="text-2xl font-bold text-blue-950 mb-4">Instalação de Redes</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Infraestrutura estruturada, configuração de servidores e Wi-Fi de alta performance.</p>
+          </div>
+        </div>
+
+        <!-- Manutenção -->
+        <div class="card-modern">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Hardware">
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-950/80 to-transparent"></div>
+            <div class="absolute top-6 left-6 bg-white/90 text-blue-600 w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg"><i data-lucide="cpu"></i></div>
+          </div>
+          <div class="p-10">
+            <h3 class="text-2xl font-bold text-blue-950 mb-4">Manutenção de Hardware</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Upgrade de componentes, limpeza física e otimização para máxima vida útil do equipamento.</p>
+          </div>
+        </div>
+
+        <!-- Vendas -->
+        <div class="card-modern">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Vendas">
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-950/80 to-transparent"></div>
+            <div class="absolute top-6 left-6 bg-white/90 text-blue-600 w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg"><i data-lucide="shopping-cart"></i></div>
+          </div>
+          <div class="p-10">
+            <h3 class="text-2xl font-bold text-blue-950 mb-4">Venda de Equipamentos</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Computadores, periféricos e acessórios originais com garantia e suporte especializado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="sobre" class="py-32 dark-section">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <div class="relative">
+        <div class="absolute -top-10 -left-10 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl"></div>
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000" class="relative z-10 rounded-[3rem] shadow-3xl border border-white/10" alt="Sobre">
+      </div>
+      <div>
+        <h2 class="text-yellow-400 font-bold uppercase text-[11px] tracking-[0.4em] mb-6">Quem Somos</h2>
+        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight tracking-tighter">Inovação em TI desde 2023</h3>
+        <p class="text-slate-300 text-lg leading-relaxed mb-10 italic border-l-4 border-yellow-400 pl-6 bg-white/5 py-6 rounded-r-2xl">"Nascemos para democratizar o acesso a soluções de TI de alta qualidade em Moçambique."</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5"><i data-lucide="check-circle" class="text-yellow-400"></i> <span class="text-xs font-bold uppercase tracking-tight">Excelência Técnica</span></div>
+          <div class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5"><i data-lucide="check-circle" class="text-yellow-400"></i> <span class="text-xs font-bold uppercase tracking-tight">Transparência Total</span></div>
+          <div class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5"><i data-lucide="check-circle" class="text-yellow-400"></i> <span class="text-xs font-bold uppercase tracking-tight">Foco em Resultados</span></div>
+          <div class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5"><i data-lucide="check-circle" class="text-yellow-400"></i> <span class="text-xs font-bold uppercase tracking-tight">Inovação Constante</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enrollment Form Section -->
+  <section id="inscricao" class="py-32 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-20 items-stretch">
+      <div class="lg:w-2/5 flex flex-col justify-between">
+        <div>
+          <h2 class="text-blue-600 font-bold uppercase text-[11px] tracking-[0.4em] mb-6">Educação Digital</h2>
+          <h3 class="text-4xl md:text-5xl font-black text-blue-950 mb-8 leading-tight">Sua jornada técnica começa aqui</h3>
+          <p class="text-slate-600 text-lg mb-10 leading-relaxed">Garanta sua vaga para a próxima turma. Metodologia 100% prática e focada no mercado de trabalho atual.</p>
+        </div>
+        <div class="bg-blue-950 p-12 rounded-[3rem] text-center text-white shadow-2xl relative overflow-hidden">
+          <div class="relative z-10">
+            <div class="flex items-center justify-center gap-2 text-yellow-400 mb-6 font-bold uppercase text-[10px] tracking-widest">
+              <i data-lucide="calendar" size="16"></i> Início em 01 de Novembro
+            </div>
+            <div class="grid grid-cols-4 gap-4" id="timer">
+              <div><div class="text-3xl font-black" id="days">00</div><div class="text-[9px] uppercase opacity-50">Dias</div></div>
+              <div><div class="text-3xl font-black" id="hours">00</div><div class="text-[9px] uppercase opacity-50">Horas</div></div>
+              <div><div class="text-3xl font-black" id="minutes">00</div><div class="text-[9px] uppercase opacity-50">Min</div></div>
+              <div><div class="text-3xl font-black" id="seconds">00</div><div class="text-[9px] uppercase opacity-50">Seg</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="lg:w-3/5 bg-white p-12 md:p-16 rounded-[4rem] shadow-xl border border-slate-100">
+        <form action="https://formspree.io/f/xnnvbqkq" method="POST" class="space-y-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-2">
+              <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Nome Completo</label>
+              <input type="text" name="nome" placeholder="Seu nome" required class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-blue-600 border border-slate-100 transition-all">
+            </div>
+            <div class="space-y-2">
+              <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">E-mail</label>
+              <input type="email" name="email" placeholder="seu@email.com" required class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-blue-600 border border-slate-100 transition-all">
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="space-y-2">
+              <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Modalidade</label>
+              <select name="modalidade" required class="w-full p-5 bg-slate-50 rounded-2xl outline-none border border-slate-100 cursor-pointer">
+                <option value="">Selecione</option>
+                <option value="Presencial">Presencial</option>
+                <option value="Online">Online</option>
+              </select>
+            </div>
+            <div class="space-y-2">
+              <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Nível</label>
+              <select name="nivel" required class="w-full p-5 bg-slate-50 rounded-2xl outline-none border border-slate-100 cursor-pointer">
+                <option value="">Selecione o Nível</option>
+                <option value="Básico">Básico</option>
+                <option value="Médio">Médio</option>
+                <option value="Avançado">Avançado</option>
+              </select>
+            </div>
+            <div class="space-y-2">
+              <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Horário</label>
+              <select name="horario" required class="w-full p-5 bg-slate-50 rounded-2xl outline-none border border-slate-100 cursor-pointer">
+                <option value="">Horário</option>
+                <option value="08H-10H">08H-10H</option>
+                <option value="11H-13H">11H-13H</option>
+                <option value="14H-16H">14H-16H</option>
+                <option value="17H-19H">17H-19H</option>
+                <option value="19:30H-21:30H">19:30H-21:30H</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="animate-shimmer w-full bg-blue-950 text-white py-6 rounded-3xl font-black text-lg hover:bg-blue-900 transition-all shadow-xl flex items-center justify-center gap-4">
+            <i data-lucide="send" size="20"></i> ENVIAR MINHA INSCRIÇÃO AGORA
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery/Portfolio -->
+  <section id="galeria" class="py-32 bg-[#020617]">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-yellow-400 font-bold uppercase text-[11px] tracking-[0.4em] mb-4">Galeria</h2>
+      <p class="text-4xl md:text-6xl font-black text-white mb-16 leading-tight">Nossos Trabalhos</p>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="relative group rounded-[2.5rem] overflow-hidden aspect-[4/3] border border-white/10">
+          <img src="https://images.unsplash.com/photo-1588702547324-f176aa511944?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" alt="Portfolio 1">
+          <div class="absolute inset-0 bg-blue-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+            <span class="text-white font-black text-xl tracking-tight">Infraestrutura</span>
+          </div>
+        </div>
+        <div class="relative group rounded-[2.5rem] overflow-hidden aspect-[4/3] border border-white/10">
+          <img src="https://images.unsplash.com/photo-1597733336794-12d05021d510?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" alt="Portfolio 2">
+          <div class="absolute inset-0 bg-blue-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+            <span class="text-white font-black text-xl tracking-tight">Manutenção</span>
+          </div>
+        </div>
+        <div class="relative group rounded-[2.5rem] overflow-hidden aspect-[4/3] border border-white/10">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" alt="Portfolio 3">
+          <div class="absolute inset-0 bg-blue-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+            <span class="text-white font-black text-xl tracking-tight">Treinamento</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="orcamento" class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+      <div class="space-y-10">
+        <h2 class="text-blue-600 font-bold uppercase text-[11px] tracking-[0.4em]">Solicite Grátis</h2>
+        <h3 class="text-5xl md:text-7xl font-black text-blue-950 leading-none">Vamos criar o seu <br/><span class="text-blue-600">Orçamento</span>.</h3>
+        <p class="text-slate-500 text-xl leading-relaxed">Atendimento via WhatsApp e E-mail para consultoria personalizada em Moçambique.</p>
+        <div class="flex items-center gap-6">
+          <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-blue-600 border border-slate-100"><i data-lucide="phone" size="28"></i></div>
+          <div>
+            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-[0.3em]">WhatsApp</p>
+            <p class="text-2xl font-black text-blue-950">+258 87 931 7552</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-blue-950 p-12 md:p-16 rounded-[4rem] text-white flex flex-col gap-8 shadow-3xl">
+        <a href="https://wa.me/258879317552" target="_blank" class="flex justify-between items-center bg-yellow-400 text-blue-950 p-8 rounded-[2.5rem] font-black text-xl hover:scale-105 transition-all shadow-xl">
+          <span>Chamar no WhatsApp</span><i data-lucide="message-square" size="28"></i>
+        </a>
+        <a href="mailto:jccomputerservicesei@gmail.com" class="flex justify-between items-center bg-white/10 p-8 rounded-[2.5rem] font-bold text-xl hover:bg-white/20 transition-all border border-white/10">
+          <span>Mandar E-mail</span><i data-lucide="send" size="28"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#020617] py-20 text-center text-white/40 text-[10px] font-bold uppercase tracking-[0.5em] border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
+      <div class="mb-10 text-white flex flex-col items-center">
+        <span class="text-2xl font-black tracking-tighter uppercase mb-1">JC COMPUTER</span>
+        <span class="text-[8px] font-bold tracking-[0.6em] opacity-60">Services</span>
+      </div>
+      <p>&copy; 2025 JC Computer Services EI. <br class="md:hidden"> Todos os direitos reservados.</p>
+      <div class="mt-8 flex items-center gap-2 text-white/60">
+        Inovação em Moçambique <i data-lucide="heart" size="12" class="text-red-500 fill-red-500"></i>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WA Button -->
+  <a href="https://wa.me/258879317552" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white p-5 rounded-full shadow-2xl floating-whatsapp hover:scale-110 transition-transform">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" class="w-8 h-8 filter brightness-0 invert">
+  </a>
+
+  <script>
+    lucide.createIcons();
+
+    // Mobile Menu
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('close-menu');
+    const menu = document.getElementById('mobile-menu');
+    menuBtn.onclick = () => menu.classList.remove('hidden');
+    closeBtn.onclick = () => menu.classList.add('hidden');
+    menu.onclick = (e) => { if(e.target.tagName === 'A') menu.classList.add('hidden'); };
+
+    // Navbar Scroll
+    const navbar = document.getElementById('navbar');
+    const navCta = document.getElementById('nav-cta');
+    window.onscroll = () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+        navCta.classList.replace('bg-yellow-400', 'bg-blue-950');
+        navCta.classList.replace('text-blue-950', 'text-white');
+      } else {
+        navbar.classList.remove('scrolled');
+        navCta.classList.replace('bg-blue-950', 'bg-yellow-400');
+        navCta.classList.replace('text-white', 'text-blue-950');
+      }
+    };
+
+    // Countdown
+    const target = new Date("2025-11-01T00:00:00").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = target - now;
+      if (diff > 0) {
+        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2,'0');
+        document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2,'0');
+        document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2,'0');
+        document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2,'0');
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
